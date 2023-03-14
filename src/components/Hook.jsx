@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+
 function Hook() {
     const [ count, setCount] = useState(0);
     const [title, setTitle] = useState("text")
@@ -17,15 +18,15 @@ function Hook() {
         console.log(e.target.value);
     }
   return (
-    <div>
+    <div className='for'>
         <h1>event {count}</h1>
-        <button onClick={() => setCount(count+1)}>+</button>
-        <button onClick={() => setCount(count - 1)}>-</button>
+        <button className='read' onClick={() => setCount(count+1)}>+</button>
+        <button className='read1' onClick={() => setCount(count - 1)}>-</button>
         <h1>name: {title}</h1>
-        <h1>gender: {gender}</h1>
+        <h1 className='youfor'>gender: {gender}</h1>
         <h1>gender: {check && "checked"}</h1>
-        <input type="text" onChange={onChange} />
-        <select onChange={onSelect} name="" id="">
+        <input className='foryou' type="text" onChange={onChange} />
+        <select className='you' onChange={onSelect} name="" id="">
             <option value="males">male</option>
             <option value="females">females</option>
             <option value="uncknown">uncknows</option>
