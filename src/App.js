@@ -1,15 +1,11 @@
 import React from 'react'
-import Hooks from './components/Hooks'
-
-
+import Hook from './components/Hook'
 
 function App() {
   return (
-    <div> 
-     
-      <Hooks/>
-     </div>
-
+    <div>
+      <Hook/>
+    </div>
   )
 }
 
