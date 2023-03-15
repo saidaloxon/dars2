@@ -1,15 +1,12 @@
 import React from 'react'
-import Hooks from './components/Hooks'
-
+import Map from './components/Map'
 
 
 function App() {
   return (
-    <div> 
-     
-      <Hooks/>
-     </div>
-
+    <div>
+      <Map/>
+    </div>
   )
 }
 
