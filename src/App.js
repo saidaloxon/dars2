@@ -1,11 +1,11 @@
 import React from 'react'
-import Hook from './components/Hook'
-import  './components/style.css'
+import Map from './components/Map'
+
 
 function App() {
   return (
     <div>
-      <Hook/>
+      <Map/>
     </div>
   )
 }
