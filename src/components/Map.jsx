@@ -7,6 +7,9 @@ function Map() {
  const [select, setSelect] = useState("id");
  const [address, setAddress] = useState("");
  const [name, setName] = useState("");
+ const [active, setActive] = useState(null);
+ const [names, setNames] = useState("");
+ const [addresses, setAddresses] = useState("");
 
  const onSearch = (event) => {
     console.log(search);
@@ -14,7 +17,7 @@ function Map() {
     let res = data.filter(val =>'$[val.[slect]}'.toLowerCase().includes(search))
     setData(res)
  } 
- const getSelectval = (e) => {
+ const getSelectedVal = (e) => {
     setSelect(e.target.value)
  }
  console.log(select);
@@ -39,6 +42,23 @@ function Map() {
     setName("");
     setAddress("")
  }
+ const onEdit = (val) => {
+    setActive(val)
+    setNames(val.name)
+    setAddresses(val.address)
+ } 
+ const onSave = () => {
+    let res = datas.map((val) => active.id===val.id ? {...val, name:names,address:addresses} : val)
+    setData(res);
+    setActive(null) 
+ }
+ const onChangeName = (e) => {
+    setNames(e.target.value)
+  }
+  const onChangeAddress = (e) => {
+    setAddresses(e.target.value)
+
+  }
   return (
     <div>
         <input type="text" placeholder='name' onChange={getValueName} />
@@ -50,7 +70,7 @@ function Map() {
         <hr />
         <hr />
         <input type="text" placeholder='search' onChange={onSearch} />
-        <select onChange={getSelectedVal} name="" id="">
+        <select onChange = {getSelectedVal} name="" id="">
             <option value="id">id</option>
             <option value="name">name</option>
             <option value="address">address</option>
@@ -71,10 +91,11 @@ function Map() {
                     return(
                         <tr key = {val.id}>
                         <td>{val.id}</td>            
-                        <td>{val.name}</td>            
-                        <td>{val.address}</td>            
+                        <td>{active?.id === val.id ? <input onChange={onChangeName} value={names} type="text" /> : val.name}</td>            
+                        <td>{active?.id === val.id ? <input onChange={onChangeAddress} value={addresses} type="text" /> : val.address}</td>            
                         <td>
                             <button onClick={() => onDelete(val.id)}>delete</button>
+                          {  active?.id === val.id ? <button onClick={onSave}>save</button> : <button onClick={()=>onEdit(val)}>edit</button>}
                         </td>            
                         </tr>
                     )
