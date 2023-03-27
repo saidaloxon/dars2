@@ -1,37 +1,48 @@
-import styled from "styled-components";
-import {css} from "styled-components";
+import styled,{keyframes} from "styled-components";
 
-const getSize = (props) => {
-    switch (props.prop) {
-        case "small": return "100px"
-        case "medium": return "200px"
-        case "large": return "300px"
-        default: return "200px"
+const Container = styled.div`
+    display: flex;
+`
+const rotate = keyframes`
+    from{
+        transform: rotate(0deg);
     }
-}
-
-const Conteiner = styled.div`
-background-color: darkgrey;
-padding: 20px;
-display: flex;
-gap: 15px;
+    to{
+        transform: rotate(360deg);
+    }
 `
-const common = css`
+const Button = styled.div`
+    width: 200px;
+    height: 50px;
     background-color: coral;
-    font-size: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-style: italic;
-    text-align: center;
-`
-const Title = styled("h1")`
-color: ${(props) => props.color}
-${common}
-`
-const Item = styled.div`
-    width: ${getSize};
-    height: ${getSize};
-    ${common}
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 15px;
+    :active{
+        transform: scale(.97);
+    }
+`;
+const NewButton = styled(Button)`
+height: 60px;
 `
 
+const Rotate = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid red;
+    animation: ${rotate} linear 2s infinite;
+    :active{
+        animation: ${rotate} linear 2s ;
+    }
+`
 
-export {Conteiner, Title, Item}
+export {Container,Button,NewButton,Rotate}

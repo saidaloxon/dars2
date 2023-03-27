@@ -1,18 +1,37 @@
-import React from 'react'
-import './style.css'
-import { Conteiner, Item, Title } from './styled'
+import React, {useState} from 'react'
+import {Button, Container, NewButton, Rotate} from './styled'
+import {ThemeProvider, createGlobalStyle} from 'styled-components'
 
-function Stylecom() {
+const GlobalStyle = createGlobalStyle`
+  body{
+    background: ${(props)=>props.theme.bg};
+    color: ${(props)=>props.theme.cl};
+  }
+`
+
+function StyledCom() {
+  const [light, setLight] = useState(false);
+  const theme = {
+    bg:light?'white':'black',
+    cl:light?'black':'white',
+  }
+  const onChanges = () => {
+    setLight(!light)
+}
+
   return (
-    <Conteiner>
-        <Title color='blue'>Stylecom</Title>
-        <Title color='yellow'>Stylecom</Title>
-        <Item prop="small">Small</Item>
-        <Item prop="medium">Medium</Item>
-        <Item prop="large">large</Item>
-        <Item prop="xlarge">large</Item>
-    </Conteiner>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Container>
+        <Button>Click me</Button>
+        <NewButton>New Button</NewButton>
+        <Rotate>
+          <a href="#" >rotate</a>
+        </Rotate>
+      </Container>
+      <NewButton onClick={onChanges}>change lightness</NewButton>
+    </ThemeProvider>
   )
 }
 
-export default Stylecom
+export default StyledCom
