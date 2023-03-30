@@ -1,11 +1,10 @@
 import React from 'react'
-import Youtube from './components/Youtube'
-
+import Reducer from './components/Reducer'
 
 function App() {
   return (
     <div>
-      <Youtube/>
+      <Reducer/>
     </div>
   )
 }
