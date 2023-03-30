@@ -1,10 +1,11 @@
 import React from 'react'
-import Stylecom from './components/Stylecom'
+import Youtube from './components/Youtube'
+
 
 function App() {
   return (
     <div>
-      <Stylecom/>
+      <Youtube/>
     </div>
   )
 }
