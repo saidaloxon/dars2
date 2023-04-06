@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+// import { Router } from 'react-router-dom';
 import './index.css';
-import App from './App';
-import StudentList from './components/Context';
+import Root from './root';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <StudentList>
-      <App />
-    </StudentList>
+     <Router>
+       <Root />
+    </Router>
   </React.StrictMode>
 );
 
